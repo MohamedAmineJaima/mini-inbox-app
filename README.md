@@ -6,12 +6,19 @@ which is an unofficial API (an emulation of the browser) that gives access to Fa
 Since The official one gives only access to page's conversations. 
 The only inconvenient to use this API is we have to enter our Facebook credentials instead of the Access Token.
 
+For realtime message reception it uses WebSockets (socket.io) from : https://socket.io/
+
+Frontend : AngularJS
+
+Backend : NodeJS, ExpressJS (ejs as template engine).
+
+
 #Setup
-git clone https://github.com/toshiro94/mini-inbox-app.git
+<code>git clone https://github.com/toshiro94/mini-inbox-app.git</code>
 
-Edit the file index.js (root directory) in line 35 and enter our credentials (FB EMAIL and PASSWORD).
+Edit the file <code>index.js </code>(root directory) in line 35 and enter our credentials (FB EMAIL and PASSWORD).
 
-Execute : node index.js
+Execute : <code>node index.js</code>
 
 
 
