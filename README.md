@@ -8,9 +8,9 @@ The only inconvenient to use this API is we have to enter our Facebook credentia
 
 For realtime message reception it uses WebSockets (socket.io) from : https://socket.io/
 
-Frontend : AngularJS
+<b>Frontend</b> : AngularJS
 
-Backend : NodeJS, ExpressJS (ejs as template engine).
+<b>Backend</b> : NodeJS, ExpressJS (ejs as template engine).
 
 
 #Setup
