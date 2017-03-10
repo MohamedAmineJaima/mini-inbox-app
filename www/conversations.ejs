@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inbox</title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+  <link href="/css/animate.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"></link>
+  <style type="text/css">
+
+    .msg-left{
+      background-color: #eee;
+      border-radius: 40px;
+      font-size: 20px;
+      color:#1d2129;
+      margin-left: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .msg-right{
+      background-color: #4080ff;
+      border-radius: 40px;
+      font-size: 20px;
+      color:white;
+      margin-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+
+  </style>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/angular.min.js"></script>
+  <script src="/js/socket.js"></script>
+  <script src="/angular-ui-bootstrap/dist/ui-bootstrap-tpls-2.5.0.js"></script>
+  <script src="/angular-module/app.js"></script>
+  <script src="/angular-module/controllers.js"></script>
+  <script src="/angular-module/controllers/conversationCtrl.js"></script>
+
+
+</head>
+<body ng-app="mini-inbox-app"  ng-controller="conversationCtrl" >
+
+
+  <div id="wrapper">
+    <div id="page-wrapper" class="gray-bg" style="min-height: 1167px;margin-left:0px;">
+
+
+      <div class="wrapper wrapper-content">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="ibox float-e-margins">
+              <div class="ibox-content mailbox-content">
+                <div class="file-manager">
+                 <!--  <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a> -->
+                 <div class="space-25"></div>
+                 <h5>Folders</h5>
+                 <ul class="folder-list m-b-md" style="padding: 0">
+                  <li><a ng-click="redirect()"> <i class="fa fa-inbox "></i> Inbox  </a></li>
+                </ul>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 animated fadeInRight">
+          <div class="mail-box-header">
+
+            <form method="get" action="index.html" class="pull-right mail-search">
+           
+                                  </form>
+                                  <div class="pull-left">
+                                    <img src="<%= fbpic %>" alt="">&nbsp;&nbsp;
+                                  </div>
+                                  <h2><%= fbname %> </h2>
+                                <!--   <div class="mail-tools tooltip-demo m-t-md">
+                                    <div class="btn-group pull-right">
+                                      <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                                      <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                                    </div>
+                                  </div> -->
+                                </div>
+                                <div class="mail-box">
+                                  <div class="full-height-scroll">
+
+                                   <% for(var i=0;i< messages.length ;i++) { %>
+
+                                   <% if(messages[i].senderID.substr(5) == fbid.toString()) { %>
+
+                                   <div class="pull-right msg-right">
+
+                                    &nbsp;<%= messages[i].body  %>&nbsp;
+
+                                  </div>
+
+                                  <br><br> <br><br>
+
+                                  <% } else { %>
+
+
+                                  <div class="pull-left msg-left" >
+
+
+                                   &nbsp;<%= messages[i].body  %>&nbsp;
+
+                                 </div>
+
+                                 <br><br> <br><br>
+
+                                 <% } }%>
+
+
+
+
+
+
+                               </div>
+
+                             </div>
+
+                             <div class="send_msg">
+                               <textarea ng-keyup="$event.keyCode == 13 ? send(): null" class="form-control" ng-model="msg"  placeholder="Send your message and press Enter" ></textarea><br>
+
+                               <button ng-click="send()" class="pull-right btn btn-primary" type="submit">Send message</button>
+
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                     </div>
+
+                   </div>
+
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-2.1.1.js"></script>
+<!-- <script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+ -->
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript">
+ $(function(){
+  $('.full-height-scroll').slimScroll({
+    height: '380px',
+    alwaysVisible: true,
+    start: 'bottom'
+  });
+});
+</script>
+
+<!-- Custom and plugin javascript -->
+<!--    <script src="/js/inspinia.js"></script>
+-->  <!--  <script src="/js/plugins/pace/pace.min.js"></script> -->
+
+
+
+</body>
+</html>

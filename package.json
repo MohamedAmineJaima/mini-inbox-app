@@ -1,0 +1,21 @@
+{
+  "name": "mini-inbox-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohamed Amine Jaima",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "^2.5.6",
+    "express": "*",
+    "facebook-chat-api": "github:schmavery/facebook-chat-api",
+    "fbgraph": "^1.4.1",
+    "mongoose": "*",
+    "pug": "^2.0.0-beta11",
+    "socket.io": "^1.7.3"
+  }
+}

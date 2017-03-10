@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inbox</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/angular-ui-bootstrap/dist/ui-bootstrap-csp.css"></link>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/socket.js"></script>
+    <script src="/angular-ui-bootstrap/dist/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="/angular-module/app.js"></script>
+    <script src="/angular-module/controllers.js"></script>
+    <script src="/angular-module/controllers/inboxCtrl.js"></script>
+
+
+    <style type="text/css">
+        .mail-contact a{
+            color:#4080ff !important;
+        }
+        .inbox_msg{
+            margin-top:12px;
+        }
+    </style>
+</head>
+
+<body class="pace-done" ng-app="mini-inbox-app"  ng-controller="inboxCtrl" >
+
+
+    <div id="wrapper">
+        <div id="page-wrapper" class="gray-bg" style="min-height: 1167px;margin-left:0px;">
+
+
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content mailbox-content">
+                                <div class="file-manager">
+                                    <button class="btn btn-block btn-primary compose-mail" ng-click="import()">Import Contacts</button>
+                                    <div class="space-25"></div>
+                                    <h5>Folders</h5>
+                                    <ul class="folder-list m-b-md" style="padding: 0">
+                                        <li><a href="/"> <i class="fa fa-inbox "></i> Inbox  </a></li>
+                                    </ul>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 animated fadeInRight">
+                        <div class="mail-box-header">
+
+                            <form method="post" class="pull-right mail-search">
+                                <div>
+
+                                <input type="text" ng-model="keyword" placeholder="Search contacts" uib-typeahead="obj.name for obj in search()" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control" typeahead-on-select='onSelect($item, $model, $label)'>
+                                 <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                 <div ng-show="noResults">
+                                  <i class="glyphicon glyphicon-remove"></i> No Results Found
+                              
+
+                          </div>
+                            <!-- <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">Search</button>
+                            </div> -->
+                        </div>
+                    </form>
+                    <h2>Inbox</h2>
+                   <!--  <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                        </div>
+                    </div> -->
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+
+                            <% for(var j=0;j< ids.length;j++){ %>
+
+                            <% var id = ids[j] ;%>
+
+                            <tr class="read">
+
+                                <td class="mail-contact">
+
+
+
+
+                                    <img src="<%= names[id].thumbSrc %>"> &nbsp;&nbsp;
+                                    <a href="/<%=  thread[j]['participantIDs'][1] %>?threadID=<%= thread[j].threadID %>&messageCount=<%= thread[j].messageCount %>"><%= names[id].name %></a>
+                                </td>
+                                <td class="mail-subject"><a href="#">
+
+                                    <p class="inbox_msg"></p></a></td>
+
+                                    <td class="text-right mail-date"></td>
+                                </tr>
+
+                                <% } %>
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<!-- Mainly scripts -->
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia.js"></script>
+<script src="/js/plugins/pace/pace.min.js"></script>
+
+
+</body>
+</html>
