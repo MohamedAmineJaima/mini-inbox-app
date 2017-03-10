@@ -20,6 +20,8 @@ Edit the file <code>index.js </code>(root directory) in line 35 and enter our cr
 
 Execute : <code>node index.js</code>
 
+Final step : Import contacts (saved in text file) before searching them.
+
 
 
 
